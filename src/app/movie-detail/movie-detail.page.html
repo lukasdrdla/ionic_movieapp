@@ -1,0 +1,97 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ movie?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Movie Info Section -->
+  <ion-card>
+    <!-- Movie Poster Image -->
+    <img *ngIf="movie?.poster_path" [src]="'https://image.tmdb.org/t/p/original' + movie?.poster_path"
+      alt="Movie Poster" style="max-height: 400px; width: 100%; object-fit: scale-down;" />
+
+    <ion-card-header>
+      <ion-card-title>{{ movie?.original_title }}</ion-card-title>
+      <ion-card-subtitle>Release Date: {{ movie?.release_date }}</ion-card-subtitle>
+      <div class="genres">
+        <ion-chip *ngFor="let genre of movie?.genres">
+          <ion-label>{{ genre.name }}</ion-label>
+        </ion-chip>
+      </div>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>{{ movie?.overview }}</p>
+      <!-- Language and Runtime -->
+      <p><strong>Language:</strong> {{ movie?.original_language }}</p>
+      <p><strong>Runtime:</strong> {{ movie?.runtime }} minutes</p>
+    </ion-card-content>
+
+    <!-- Watch Providers -->
+    <ion-card class="watch-providers-card">
+      <ion-card-header>
+        <ion-card-title>Where to Watch</ion-card-title>
+        <ion-card-subtitle>Select your favorite provider</ion-card-subtitle>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="providers-grid">
+          <div class="provider-item" *ngFor="let provider of watchProviders">
+            <img [src]="'https://image.tmdb.org/t/p/original' + provider.logo_path" alt="{{ provider.provider_name }}"
+              class="provider-logo" />
+            <p class="provider-name">{{ provider.provider_name }}</p>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+
+    <div class="movie-rating">
+      <p><strong>Rating:</strong> {{ movie?.vote_average }} ({{ movie?.vote_count }} votes)</p>
+    </div>
+
+    <!-- Button Row -->
+
+    <div class="button-row">
+      <ion-button *ngIf="videos && videos.length > 0" color="tertiary" (click)="watchTrailer(videos[0].key)"
+        expand="full">
+        <ion-icon name="play-circle" slot="start" aria-label="Play trailer"></ion-icon>
+        Přehrát trailer
+      </ion-button>
+
+      <ion-button *ngIf="!isFavorite" color="primary" (click)="addToFavorites()" expand="full">
+        <ion-icon name="heart" slot="start" aria-label="Add to favorites"></ion-icon>
+        Přidat do oblíbených
+      </ion-button>
+
+      <ion-button *ngIf="isFavorite" color="danger" (click)="removeFromFavorites()" expand="full">
+        <ion-icon name="trash" slot="start" aria-label="Remove from favorites"></ion-icon>
+        Odebrat z oblíbených
+      </ion-button>
+    </div>
+
+    <!-- Toast element -->
+    <ion-toast [isOpen]="isToastOpen" [message]="toastMessage" [duration]="1000" (didDismiss)="setOpen(false)"
+      cssClass="custom-toast" position="top"></ion-toast>
+
+
+
+    <!-- Image Gallery Section -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Image Gallery</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6" *ngFor="let image of images">
+              <img [src]="'https://image.tmdb.org/t/p/w500' + image.file_path" alt="Movie Image"
+                style="width: 100%; height: auto;">
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </ion-card>
+</ion-content>
