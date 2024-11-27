@@ -1,0 +1,26 @@
+
+.slider-container {
+    display: flex;
+    overflow-x: auto; /* Umožní horizontální posun */
+    scroll-snap-type: x mandatory; /* Plynulé scrollování */
+    gap: 10px;
+    margin-left: 12px;
+  
+  }
+  
+  h1 {
+    margin-left: 12px
+  }
+  
+  .slider {
+    flex: 0 0 auto; /* Umožní každému filmu zaujmout vlastní místo */
+    width: 200px; /* Šířka jednotlivých položek */
+    scroll-snap-align: start;
+  
+  }
+  
+  .slider-container::-webkit-scrollbar {
+    display: none; /* Schová scroll bar */
+  }
+  
+  

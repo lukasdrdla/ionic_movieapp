@@ -1,17 +1,77 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title>Movies</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content> 
+  <h1 class="section-title">Top Rated</h1>
+  <div class="slider-container">
+    <div class="slider" *ngFor="let movie of topRatedmovies">
+      <ion-img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}"
+        (click)="goToMovieDetail(movie.id)"></ion-img>
+    </div>
+  </div>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <h1 class="section-title">UpComing</h1>
+  <div class="slider-container">
+    <div class="slider" *ngFor="let movie of upComingMovies">
+      <ion-img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}"
+        (click)="goToMovieDetail(movie.id)"></ion-img>
+    </div>
+  </div>
+
+
+  <h1 class="section-title">Trending</h1>
+  <div class="slider-container">
+    <div class="slider" *ngFor="let movie of trendingMovies">
+      <ion-img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}"
+        (click)="goToMovieDetail(movie.id)"></ion-img>
+    </div>
+  </div>
+
+  <h1 class="section-title">Horror</h1>
+  <div class="slider-container">
+    <div class="slider" *ngFor="let movie of horrorMovies">
+      <ion-img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}"
+        (click)="goToMovieDetail(movie.id)"></ion-img>
+    </div>
+  </div>
+
+
+
+  <h1 class="section-title">Comedy</h1>
+  <div class="slider-container">
+    <div class="slider" *ngFor="let movie of comedyMovies">
+      <ion-img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}"
+        (click)="goToMovieDetail(movie.id)"></ion-img>
+    </div>
+  </div>
+
+
+  <h1 class="section-title">Action</h1>
+  <div class="slider-container">
+    <div class="slider" *ngFor="let movie of actionMovies">
+      <ion-img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}"
+        (click)="goToMovieDetail(movie.id)"></ion-img>
+    </div>
+  </div>
+
+
+  <h1 class="section-title">Romance</h1>
+  <div class="slider-container">
+    <div class="slider" *ngFor="let movie of romanceMovies">
+      <ion-img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path" alt="{{ movie.title }}"
+        (click)="goToMovieDetail(movie.id)"></ion-img>
+    </div>
+  </div>
+
+
+
+
+  <ng-template #loading>
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Loading movies...</p>
+  </ng-template>
+
 </ion-content>
