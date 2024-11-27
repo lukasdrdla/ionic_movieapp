@@ -1,2 +1,107 @@
-// For information on how to create your own theme, please see:
-// http://ionicframework.com/docs/theming/
+/* Výchozí světelné téma */
+body[theme="light"] {
+    --ion-background-color: #ffffff;
+    --ion-text-color: #000000;
+    --ion-toolbar-background: #f4f4f4;
+    --ion-toolbar-text-color: #000000;
+    --ion-card-background: #f4f4f4;
+    --ion-card-text-color: #000000;
+    --ion-item-background: #ffffff;
+    --ion-item-text-color: #000000;
+    --ion-item-border-color: #f4f4f4;
+    --ion-tab-bar-background: #f4f4f4;
+}
+
+/* Tmavé téma */
+body[theme="dark"] {
+    --ion-background-color: #121212;
+    --ion-text-color: #ffffff;
+    --ion-toolbar-background: #333333;
+    --ion-toolbar-text-color: #ffffff;
+    --ion-card-background: #1d1d1d;
+    --ion-card-text-color: #ffffff;
+    --ion-item-background: #1d1d1d;
+    --ion-item-text-color: #ffffff;
+    --ion-item-border-color: #333333;
+    --ion-tab-bar-background: #333333;
+
+}
+
+/* Styl pro card */
+body[theme="light"] ion-card {
+    --background: var(--ion-card-background);
+    --color: var(--ion-card-text-color);
+}
+
+body[theme="dark"] ion-card {
+    --background: var(--ion-card-background);
+    --color: var(--ion-card-text-color);
+}
+
+/* Styl pro toolbar */
+body[theme="light"] ion-toolbar {
+    --background: var(--ion-toolbar-background);
+    --color: var(--ion-toolbar-text-color);
+}
+
+body[theme="dark"] ion-toolbar {
+    --background: var(--ion-toolbar-background);
+    --color: var(--ion-toolbar-text-color);
+}
+
+/* Styl pro text */
+body[theme="light"] ion-card-title,
+body[theme="light"] ion-card-subtitle,
+body[theme="light"] ion-chip,
+body[theme="light"] ion-label {
+    color: var(--ion-text-color);
+}
+
+body[theme="dark"] ion-card-title,
+body[theme="dark"] ion-card-subtitle,
+body[theme="dark"] ion-chip,
+body[theme="dark"] ion-label {
+    color: var(--ion-text-color);
+}
+
+/* Tlačítka */
+body[theme="light"] ion-button {
+    --background: #3880ff;
+    --color: #ffffff;
+}
+
+body[theme="dark"] ion-button {
+    --background: #3880ff;
+    --color: #ffffff;
+}
+
+body[theme="light"] ion-button[color="secondary"] {
+    --background: #f4f4f4;
+    --color: #000000;
+}
+
+body[theme="dark"] ion-button[color="secondary"] {
+    --background: #333333;
+    --color: #ffffff;
+}
+
+body[theme="light"] ion-button[color="tertiary"] {
+    --background: #ff5c8d;
+    --color: #ffffff;
+}
+
+body[theme="dark"] ion-button[color="tertiary"] {
+    --background: #ff5c8d;
+    --color: #ffffff;
+}
+
+/* Styl pro toast */
+body[theme="light"] ion-toast {
+    --background: #ffffff;
+    --color: #000000;
+}
+
+body[theme="dark"] ion-toast {
+    --background: #333333;
+    --color: #ffffff;
+}
