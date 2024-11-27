@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import {
   IonHeader, IonToolbar, IonTitle, IonContent,
-  IonList,
-  IonItem,
-  IonThumbnail,
-  IonLabel,
   IonCard,
   IonCardHeader,
   IonCardTitle,
@@ -63,14 +59,14 @@ export class Tab3Page {
   }
 
   constructor(
-    private favoritesService: FavouriteMovieService,
+    private favouriteMovieService: FavouriteMovieService,
     private router: Router
   ) {
     addIcons({ trash });
   }
 
   async ionViewDidEnter() {
-    const data = await this.favoritesService.get('favoriteMovies')
+    const data = await this.favouriteMovieService.get('favoriteMovies')
     if (data) {
       this.favoriteMovies = data
     }
@@ -79,7 +75,7 @@ export class Tab3Page {
 
   async removeFavoriteMovie(movieId: number) {
     try {
-      await this.favoritesService.removeFavoriteMovie(movieId);
+      await this.favouriteMovieService.removeFavoriteMovie(movieId);
       this.toastMessage = 'Movie removed from favorites';
       this.showToast();
       this.favoriteMovies = this.favoriteMovies.filter((m: any) => m.id !== movieId);
