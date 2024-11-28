@@ -34,14 +34,13 @@ export class Tab2Page implements OnInit {
   currentPage = 1;
   pageSize = 10;
   hasMorePages = true;
-  isSearchMode = false; // Určuje, zda je aktivní vyhledávání nebo zobrazení populárních filmů
+  isSearchMode = false;
 
   ngOnInit() {
     this.loadMovies();
   }
 
   loadMovies(event?: any) {
-    // Vybereme zdroj dat podle režimu (vyhledávání nebo populární filmy)
     const dataObservable = this.isSearchMode 
       ? this.movieService.searchMovies(this.searchQuery)
       : this.movieService.getPagedMovies(this.currentPage);
@@ -49,23 +48,18 @@ export class Tab2Page implements OnInit {
     dataObservable.subscribe((data: any) => {
       const newMovies = data.results.slice(0, this.pageSize);
 
-      // Pokud je to první načtení, nahradíme celý seznam
       if (this.currentPage === 1) {
         this.movies = newMovies;
       } else {
-        // Jinak přidáme nové filmy do seznamu
         this.movies.push(...newMovies);
       }
 
-      // Kontrola, zda existují další stránky
       this.hasMorePages = newMovies.length === this.pageSize;
 
-      // Pokud je nekonečný scroll aktivní, ukončíme ho
       if (event) {
         event.target.complete();
       }
 
-      // Posun na další stránku
       if (this.hasMorePages && !this.isSearchMode) {
         this.currentPage++;
       }
@@ -73,15 +67,13 @@ export class Tab2Page implements OnInit {
   }
 
   searchMovies() {
-    // Přepnutí do režimu vyhledávání
     this.isSearchMode = !!this.searchQuery.trim();
     this.currentPage = 1;
-    this.hasMorePages = false; // Vyhledávání nevyužívá stránkování
+    this.hasMorePages = false;
     this.loadMovies();
   }
 
   clearSearch() {
-    // Resetování vyhledávání
     this.searchQuery = '';
     this.isSearchMode = false;
     this.resetPagination();

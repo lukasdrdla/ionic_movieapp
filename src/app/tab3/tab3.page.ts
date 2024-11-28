@@ -44,16 +44,15 @@ import { Router } from '@angular/router';
   ]
 })
 export class Tab3Page {
-  favoriteMovies: any[] = []; // Tady budou oblíbené filmy
+  favoriteMovies: any[] = [];
 
-  isToastOpen = false; // Stav toastu
-  toastMessage = ''; // Zpráva toastu
+  isToastOpen = false;
+  toastMessage = '';
 
   showToast() {
-    this.setOpen(true);  // Nastavení toastu jako otevřeného
+    this.setOpen(true);
   }
 
-  // Funkce pro nastavení stavu toastu
   setOpen(isOpen: boolean) {
     this.isToastOpen = isOpen;
   }
@@ -71,7 +70,6 @@ export class Tab3Page {
       this.favoriteMovies = data
     }
   }
-
 
   async removeFavoriteMovie(movieId: number) {
     try {

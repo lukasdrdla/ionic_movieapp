@@ -6,9 +6,6 @@ import {
   IonTitle,
   IonContent,
   IonSpinner,
-  IonGrid,
-  IonRow,
-  IonCol,
 } from '@ionic/angular/standalone';
 import { MovieServiceService } from '../services/movie-service.service';
 import { CommonModule } from '@angular/common';
@@ -59,9 +56,6 @@ export class Tab1Page implements OnInit {
   
   }
 
-
-
-
   getTopRatedMovies() {
     return this.movieService.getTopRatedMovies().subscribe((data: any) => {
       this.topRatedmovies = data.results.slice(0, 12);
@@ -103,10 +97,6 @@ export class Tab1Page implements OnInit {
       this.romanceMovies = data.results.slice(0, 12);
     });
   }
-
-
-
-
 
   goToMovieDetail(id: number) {
     this.router.navigate(['/tabs/movie-detail', id]);
