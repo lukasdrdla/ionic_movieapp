@@ -1,25 +1,25 @@
 ion-tab-button {
-    --color-selected: #834eff;
+    --color-selected: #f44033;
     --color: #555555; /* Barva pro nevybranou kartu (např. šedá) */
-    --color-hover: #834eff	; /* Barva při najetí na kartu (např. světle růžová) */
+    --color-hover: #f44033	; /* Barva při najetí na kartu (např. světle růžová) */
   }
   
   /* Barva pro ikonky a popisky při vybrané kartě */
   ion-tab-button[selected] {
-    --color: #834eff; /* Barva pro ikony a popisky vybrané karty */
+    --color: #f44033; /* Barva pro ikony a popisky vybrané karty */
   }
   
   ion-tab-button:hover {
     --color: #f1c6d7; /* Barva při najetí na kartu */
-    --color-hover: #834eff; /* Barva pro ikony a popisky při hover */
+    --color-hover: #f44033; /* Barva pro ikony a popisky při hover */
   }
   
   /* Pokud chcete změnit barvy ikonek pro hover a selected stav */
   ion-tab-button[selected] ion-icon {
-    color: #834eff; /* Barva ikonky pro vybranou kartu */
+    color: #f44033; /* Barva ikonky pro vybranou kartu */
   }
   
   ion-tab-button:hover ion-icon {
-    color: #834eff; /* Barva ikonky při hover */
+    color: #f44033; /* Barva ikonky při hover */
   }
   

@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.ionicmovieapp',
-  appName: 'ionicmovieapp',
+  appId: 'com.cinemio.app',
+  appName: 'Cinemio',
   webDir: 'www',
 
   plugins: {

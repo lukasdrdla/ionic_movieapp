@@ -8,7 +8,7 @@
   <!-- Movie Info Section -->
   <ion-card>
     <!-- Movie Poster Image -->
-    <img *ngIf="movie?.poster_path" [src]="'https://image.tmdb.org/t/p/original' + movie?.poster_path"
+    <img *ngIf="movie?.poster_path" [src]="'https://image.tmdb.org/t/p/w500' + movie?.poster_path"
       alt="Movie Poster" style="max-height: 400px; width: 100%; object-fit: scale-down;" />
 
     <ion-card-header>
