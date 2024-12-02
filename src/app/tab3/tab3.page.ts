@@ -13,11 +13,11 @@ import {
   IonCol,
   IonToast
 } from '@ionic/angular/standalone';
-import { FavouriteMovieService } from '../services/favourite-movie.service';
 import { CommonModule } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { trash } from 'ionicons/icons';
 import { Router } from '@angular/router';
+import { AppStorageService } from '../services/app-storage.service';
 
 @Component({
   selector: 'app-tab3',
@@ -58,7 +58,7 @@ export class Tab3Page {
   }
 
   constructor(
-    private favouriteMovieService: FavouriteMovieService,
+    private favouriteMovieService: AppStorageService,
     private router: Router
   ) {
     addIcons({ trash });

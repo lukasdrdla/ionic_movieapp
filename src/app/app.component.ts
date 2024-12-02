@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { IonApp, IonRouterOutlet, IonHeader, IonToolbar, IonTitle, IonToggle  } from '@ionic/angular/standalone';
-import { IonButton } from '@ionic/angular/standalone';
 import { AppStorageService } from './services/app-storage.service';
 
 @Component({

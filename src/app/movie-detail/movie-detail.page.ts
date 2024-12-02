@@ -7,7 +7,7 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonLabel, IonButton, IonCa
 import { addIcons } from 'ionicons';
 import { playCircle, heart, trash } from 'ionicons/icons';
 import { MovieServiceService } from '../services/movie-service.service';
-import { FavouriteMovieService } from '../services/favourite-movie.service';
+import { AppStorageService } from '../services/app-storage.service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -22,7 +22,7 @@ import { FavouriteMovieService } from '../services/favourite-movie.service';
 })
 export class MovieDetailPage implements OnInit {
   private movieService = inject(MovieServiceService);
-  private favouritesService = inject(FavouriteMovieService);
+  private favouritesService = inject(AppStorageService);
 
   // Public properties
   public movie: any = {};
