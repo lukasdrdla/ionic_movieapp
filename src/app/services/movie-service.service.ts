@@ -67,5 +67,17 @@ export class MovieServiceService {
   getWatchProviders(id: number) {
     return this.http.get(`${BASE_URL}/movie/${id}/watch/providers?api_key=${API_KEY}`);
   }
+
+  getMoviesByGenre(genreId: string, page: number) {
+    return this.http.get<{ results: any[]; total_pages: number }>(
+      `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}&page=${page}`
+    );
+  }
+  
+  searchMoviesByGenre(genreId: string, query: string) {
+    return this.http.get<{ results: any[]; total_pages: number }>(
+      `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genreId}&query=${query}`
+    );
+  }
   
 }

@@ -10,7 +10,9 @@ import {
   IonThumbnail,
   IonLabel,
   IonInfiniteScroll,
-  IonInfiniteScrollContent
+  IonInfiniteScrollContent,
+  IonSelect,
+  IonSelectOption,
 } from '@ionic/angular/standalone';
 import { MovieServiceService } from '../services/movie-service.service';
 import { FormsModule } from '@angular/forms';
@@ -23,7 +25,7 @@ import { Router } from '@angular/router';
   styleUrls: ['tab2.page.scss'],
   standalone: true,
   imports: [IonHeader, IonToolbar, IonTitle, IonContent, IonTitle, IonContent, IonSearchbar, IonList, IonItem,
-    CommonModule, IonThumbnail, IonLabel, FormsModule, IonInfiniteScroll, IonInfiniteScrollContent]
+    CommonModule, IonThumbnail, IonLabel, FormsModule, IonInfiniteScroll, IonInfiniteScrollContent, IonSelect, IonSelectOption],
 })
 export class Tab2Page implements OnInit {
   private movieService = inject(MovieServiceService);
@@ -36,14 +38,33 @@ export class Tab2Page implements OnInit {
   hasMorePages = true;
   isSearchMode = false;
 
+  public genres: { id: string; name: string }[] = [
+    { id: 'all', name: 'All' },
+    { id: '28', name: 'Action' },
+    { id: '35', name: 'Comedy' },
+    { id: '27', name: 'Horror' },
+    { id: '10749', name: 'Romance' },
+    { id: '878', name: 'Science Fiction' },
+  ];
+
+  public selectedGenre = 'all'; // Výchozí hodnota
+  public selectedGenreName = 'All'; // Výchozí hodnota
+
   ngOnInit() {
     this.loadMovies();
   }
 
   loadMovies(event?: any) {
-    const dataObservable = this.isSearchMode 
-      ? this.movieService.searchMovies(this.searchQuery)
-      : this.movieService.getPagedMovies(this.currentPage);
+    let dataObservable;
+
+    if (this.isSearchMode) {
+      dataObservable = this.movieService.searchMovies(this.searchQuery);
+    } else if (this.selectedGenre === 'all') {
+      dataObservable = this.movieService.getPagedMovies(this.currentPage);
+    }
+    else {
+      dataObservable = this.movieService.getMoviesByGenre(this.selectedGenre, this.currentPage);
+    }
 
     dataObservable.subscribe((data: any) => {
       const newMovies = data.results.slice(0, this.pageSize);
@@ -64,6 +85,12 @@ export class Tab2Page implements OnInit {
         this.currentPage++;
       }
     });
+  }
+
+  onGenreChange(event: any) {
+    this.selectedGenre = event.target.value;
+    this.resetPagination();
+    this.loadMovies();
   }
 
   searchMovies() {

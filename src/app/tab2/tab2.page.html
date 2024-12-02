@@ -12,6 +12,12 @@
     placeholder="Search movies"
   ></ion-searchbar>
 
+    <!-- Výběr žánru -->
+    <ion-select *ngIf="!isSearchMode" [(ngModel)]="selectedGenre" (ionChange)="onGenreChange($event)" placeholder="Select Genre">
+      <ion-select-option *ngFor="let genre of genres" [value]="genre.id">{{ genre.name }}</ion-select-option>
+    </ion-select>
+
+
   <!-- Seznam filmů -->
   <ion-list>
     <ion-item *ngFor="let movie of movies" (click)="goToMovieDetail(movie.id)">
