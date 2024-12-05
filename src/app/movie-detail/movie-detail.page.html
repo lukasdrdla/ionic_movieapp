@@ -47,7 +47,7 @@
 
 
     <div class="movie-rating">
-      <p><strong>Rating:</strong> {{ movie?.vote_average }} ({{ movie?.vote_count }} votes)</p>
+      <p><strong>Rating:</strong> {{ movie.vote_average | number: '1.1-1' }} ({{ movie?.vote_count }} votes)</p>
     </div>
 
     <!-- Button Row -->

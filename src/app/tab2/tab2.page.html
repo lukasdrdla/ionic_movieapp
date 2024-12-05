@@ -26,7 +26,7 @@
       </ion-thumbnail>
       <ion-label>
         <h2>{{ movie.title }}</h2>
-        <p>⭐️ {{ movie.vote_average }}</p>
+        <p>⭐️ {{ movie.vote_average | number: '1.1-1' }}</p>
       </ion-label>
     </ion-item>
   </ion-list>
