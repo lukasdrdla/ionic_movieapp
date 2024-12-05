@@ -54,7 +54,7 @@ export class AppStorageService {
     await this.set(this.FAVORITES_KEY, updatedMovies);
   }
   
-  public async isMovieInFavorites(movieId: number): Promise<boolean> {
+  public async isMovieInFavorites(movieId: number) {
     const favoriteMovies = (await this.get(this.FAVORITES_KEY)) || [];
     return favoriteMovies.some((m: any) => m.id === movieId);
   }
